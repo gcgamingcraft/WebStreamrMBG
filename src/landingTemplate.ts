@@ -271,7 +271,7 @@ export function landingTemplate(manifest: CustomManifest) {
       <div class="separator"></div>
 
       <p>
-        The source code can be found on <a href="https://github.com/webstreamr/webstreamr" target="_blank">GitHub</a>.
+        The source code can be found on <a href="https://github.com/newman2x/WebStreamrMBG" target="_blank">GitHub</a>.
       </p>
 
       <div class="separator"></div>
@@ -281,7 +281,7 @@ export function landingTemplate(manifest: CustomManifest) {
       <div class="separator"></div>
 
       <p>
-        Note: HTTP streams have limitations. For a better experience, I'd advise using a Debrid service and WebStreamr as fallback.
+        Note: HTTP streams have limitations. For a better experience, I'd advise using a Debrid service and WebStreamrMBG as fallback.
         <a href="https://torbox.app/subscription?referral=f22eb00d-27ce-4e20-85fc-68da3d018b99" target="_blank"><strong>TorBox</strong></a> is working very well. 
       </p>
 

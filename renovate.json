@@ -5,7 +5,7 @@
     ":maintainLockFilesWeekly",
     ":rebaseStalePrs"
   ],
-  "assignees": ["webstreamr"],
+  "assignees": ["newman2x"],
   "configMigration": true,
   "osvVulnerabilityAlerts": true,
   "postUpdateOptions": [

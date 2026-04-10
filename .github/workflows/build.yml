@@ -15,4 +15,4 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: false
-          tags: webstreamr/webstreamr:latest
+          tags: newman2x/webstreamr-mbg:latest

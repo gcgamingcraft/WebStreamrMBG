@@ -25,4 +25,4 @@ jobs:
         with:
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: webstreamr/webstreamr:latest
+          tags: newman2x/webstreamr-mbg:latest

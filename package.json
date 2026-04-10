@@ -1,5 +1,5 @@
 {
-  "name": "webstreamr",
+  "name": "webstreamr-mbg",
   "description": "Provides HTTP URLs from streaming websites.",
   "version": "0.69.1",
   "type": "commonjs",
@@ -16,16 +16,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/webstreamr/webstreamr.git"
+    "url": "https://github.com/newman2x/WebStreamrMBG.git"
   },
   "keywords": [
     "stremio",
     "stream"
   ],
-  "author": "WebStreamr",
+  "author": "newman2x",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/webstreamr/webstreamr/issues"
+    "url": "https://github.com/newman2x/WebStreamrMBG/issues"
   },
   "engines": {
     "node": "^22.0.0 || ^24.0.0"

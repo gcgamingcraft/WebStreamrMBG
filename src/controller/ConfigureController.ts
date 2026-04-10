@@ -24,9 +24,9 @@ export class ConfigureController {
   private getConfigure(req: Request, res: Response) {
     const config: Config = JSON.parse(req.params['config'] as string || JSON.stringify(getDefaultConfig()));
 
-    // Convenience preset for ElfHosted WebStreamr bundle including Media Flow Proxy
+    // Convenience preset for ElfHosted WebStreamrMBG bundle including Media Flow Proxy
     if (!req.params['config'] && isElfHostedInstance(req)) {
-      config.mediaFlowProxyUrl = `${req.protocol}://${req.host.replace('webstreamr', 'mediaflow-proxy')}`;
+      config.mediaFlowProxyUrl = `${req.protocol}://${req.host.replace('webstreamr-mbg', 'mediaflow-proxy')}`;
     }
 
     const manifest = buildManifest(this.sources, this.extractors, config);

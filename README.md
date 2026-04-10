@@ -8,21 +8,20 @@ app_port: 7860
 pinned: false
 ---
 
-# WebStreamr
+# WebStreamrMBG
 
-[![Tests](https://github.com/webstreamr/webstreamr/actions/workflows/tests.yml/badge.svg)](https://github.com/webstreamr/webstreamr/actions/workflows/tests.yml)
-[![GitHub release](https://img.shields.io/github/v/release/webstreamr/webstreamr)](https://github.com/webstreamr/webstreamr/releases)
-![GitHub License](https://img.shields.io/github/license/webstreamr/webstreamr)
+[![Tests](https://github.com/newman2x/WebStreamrMBG/actions/workflows/tests.yml/badge.svg)](https://github.com/newman2x/WebStreamrMBG/actions/workflows/tests.yml)
+[![GitHub release](https://img.shields.io/github/v/release/newman2x/WebStreamrMBG)](https://github.com/newman2x/WebStreamrMBG/releases)
+![GitHub License](https://img.shields.io/github/license/newman2x/WebStreamrMBG)
 
 [Stremio](https://www.stremio.com/) add-on which provides HTTP URLs from streaming websites.
 
 HTTP streams have limitations.
-For a better experience, I'd advise using a Debrid service and WebStreamr as fallback.
+For a better experience, I'd advise using a Debrid service and WebStreamrMBG as fallback.
 [TorBox](https://torbox.app/subscription?referral=f22eb00d-27ce-4e20-85fc-68da3d018b99) is working very well.
 
 ## Public instance
 
-A public instance is available at https://webstreamr.hayd.uk. Hosting infrastructure for this instance is donated by [ElfHosted](https://elfhosted.com), and independently maintained by [Hayduk](https://hayd.uk).
 
 ## Known issues / limitations
 
@@ -57,24 +56,22 @@ Don't want to use the public instance, or concerned about reliability during per
 
 ### ElfHosted (easy mode)
 
-Self-hosting to stressful? ElfHosted offer [ready-to-go, turn-key WebStreamr instances](https://store.elfhosted.com/product/webstreamr/) with $1, 7-day trials. Additionally, 33% of your subscription directly supports your developer! ❤️
 
-(*ElfHosted also offer advanced private hosting of the [top Stremio Addons](https://store.elfhosted.com/product-category/stremio-addons/elf/webstreamr/), as well as [turn-key bundles providing streaming from RealDebrid with Plex, Emby, or Jellyfin](https://store.elfhosted.com/product-category/streaming-bundles/elf/webstreamr/)*)
 
 ### Self-Hosting
 
-You can run the latest WebStreamr via Docker. E.g.
+You can run the latest WebStreamrMBG via Docker. E.g.
 
 ```shell
  docker run \
     --detach=true \
-    --name webstreamr \
+    --name webstreamr-mbg \
     --rm \
     --pull always \
     --publish 51546:51546 \
     --env TMDB_ACCESS_TOKEN="YOUR_TOKEN" \
     --volume /tmp:/tmp \
-    webstreamr/webstreamr
+    newman2x/webstreamr-mbg
 ```
 
 ### Environment variables
@@ -102,11 +99,11 @@ Proxy configuration is passed-through and only a single session is used to save 
 
 #### `MANIFEST_ID`
 
-Optional. Add-on manifest ID. Default: `webstreamr`
+Optional. Add-on manifest ID. Default: `webstreamr-mbg`
 
 #### `MANIFEST_NAME`
 
-Optional. Add-on manifest name. Default: `WebStreamr`
+Optional. Add-on manifest name. Default: `WebStreamrMBG`
 
 #### `PORT`
 

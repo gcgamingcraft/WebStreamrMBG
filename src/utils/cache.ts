@@ -35,7 +35,7 @@ export const createKeyvSqlite = (name: string): KeyvStoreAdapter => {
     return new KeyvCacheableMemory();
   }
 
-  const keyvSqlite = new KeyvSqlite(`sqlite://${cacheDir}/webstreamr-${name}.sqlite`);
+  const keyvSqlite = new KeyvSqlite(`sqlite://${cacheDir}/webstreamr-mbg-${name}.sqlite`);
 
   scheduleKeyvSqliteCleanup(keyvSqlite);
 
@@ -43,7 +43,7 @@ export const createKeyvSqlite = (name: string): KeyvStoreAdapter => {
 };
 
 export const clearCache = async (logger: winston.Logger): Promise<void> => {
-  for (const file of await glob(`${getCacheDir()}/webstreamr*`)) {
+  for (const file of await glob(`${getCacheDir()}/webstreamr-mbg*`)) {
     logger.info(`Delete cache file ${file}`);
     fs.rmSync(file);
   }

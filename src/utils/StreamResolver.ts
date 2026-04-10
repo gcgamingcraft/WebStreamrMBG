@@ -31,7 +31,7 @@ export class StreamResolver {
       return {
         streams: [
           {
-            name: 'WebStreamr',
+            name: 'WebStreamrMBG',
             title: '⚠️ No sources found. Please re-configure the plugin.',
             externalUrl: ctx.hostUrl.href,
           },
@@ -153,7 +153,7 @@ export class StreamResolver {
           name: this.buildName(ctx, urlResult),
           title: this.buildTitle(ctx, urlResult),
           behaviorHints: {
-            bingeGroup: `webstreamr-${urlResult.meta?.sourceId}-${urlResult.meta?.extractorId}-${urlResult.meta?.countryCodes?.join('_')}`,
+            bingeGroup: `webstreamr-mbg-${urlResult.meta?.sourceId}-${urlResult.meta?.extractorId}-${urlResult.meta?.countryCodes?.join('_')}`,
             ...(urlResult.format !== Format.mp4 && { notWebReady: true }),
             ...(urlResult.requestHeaders !== undefined && {
               notWebReady: true,
