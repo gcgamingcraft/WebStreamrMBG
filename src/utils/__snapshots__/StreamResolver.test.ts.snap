@@ -5,29 +5,29 @@ exports[`resolve adds error info 1`] = `
   "streams": [
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 working1",
       "url": "https://example6.com/",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 working2",
       "url": "https://example9.com/",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example1.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com",
     },
   ],
@@ -40,139 +40,139 @@ exports[`resolve adds error info 2`] = `
   "streams": [
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example14.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 ❌ Request to example14.com failed with status 418 (I'm a tea pot). Request-id: test.",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example13.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 ❌ Remote server example13.com has issues. We can't fix this, please try later again.",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example12.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 ⏳ Request queue for example12.com is full. Please try again later or consider self-hosting.",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example11.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 🐢 Request to example11.com timed out.",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example10.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 ❌ Request failed. Request-id: test.",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example8.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 🚦 Too many recent timeouts when requesting example8.com. Please try again later.",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example7.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 🚦 Request to example7.com was rate-limited. Please try again later or consider self-hosting.",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example5.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 ⚠️ Request to example5.com was blocked. Reason: unknown",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example4.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 ⚠️ MediaFlow Proxy authentication failed. Please set the correct password.",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example3.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 ⚠️ Request to example3.com was blocked. Reason: cloudflare_censor",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example2.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com
 ⚠️ Request to example2.com was blocked. Reason: cloudflare_challenge",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 working1",
       "url": "https://example6.com/",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 working2",
       "url": "https://example9.com/",
     },
     {
       "behaviorHints": {
-        "bingeGroup": "webstreamr-undefined-undefined-de",
+        "bingeGroup": "webstreamr-mbg-undefined-undefined-de",
         "notWebReady": true,
       },
       "externalUrl": "https://example1.com/",
-      "name": "WebStreamr 🇩🇪",
+      "name": "WebStreamrMBG 🇩🇪",
       "title": "🔗 hoster.com",
     },
   ],
@@ -191,10 +191,10 @@ exports[`resolve keeps fallback sources if needed 1`] = `
 [
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-vidsrc-vidsrc-multi",
+      "bingeGroup": "webstreamr-mbg-vidsrc-vidsrc-multi",
       "notWebReady": true,
     },
-    "name": "WebStreamr 🌐 1080p",
+    "name": "WebStreamrMBG 🌐 1080p",
     "title": "Wake Up Dead Man: A Knives Out Mystery (2025)
 🔗 CloudStream Pro from VidSrc",
     "url": "https://tmstr4.cloudnestra.com/pl/H4sIAAAAAAAAAwXB0ZKCIBQA0F8CMSf3sTUrAlpQLsYbqE2jWM7WbOLX7zkk6ck2y3ybo_SW4a5zeer7bXbLvWvRBn1Vo5IsAWoPY5SP8SOJeLUQXhWRaY130aGwCEMXi.6Kl2H2JkxnUl66cZ4VoUxpxWC4pvXxFK9aBIZmCdraPiheYVgtqKH_fv_BQJkn4mBqirwu1x7U7lLQn64Ruk44FkdYvZELfwTCVv3xexn7o_7ravXUw27jcTe7cVZmAmG1iupAn3KCeE1ASNyxS6N_W1JK.Sgbvb9HV1jHCwpt9V5NIZBAtK6M3YiCRzUobJrw5Hsc6ykwF04rH8Tiy5A6Avac2MYB_dgV5f.vyM6uQQEAAA--/master.m3u8",
@@ -221,7 +221,7 @@ exports[`resolve returns info as stream if no sources were configured 1`] = `
   "streams": [
     {
       "externalUrl": "http://localhost/",
-      "name": "WebStreamr",
+      "name": "WebStreamrMBG",
       "title": "⚠️ No sources found. Please re-configure the plugin.",
     },
   ],
@@ -232,7 +232,7 @@ exports[`resolve returns sorted results 1`] = `
 [
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-meinecloud-dropload-de",
+      "bingeGroup": "webstreamr-mbg-meinecloud-dropload-de",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -241,14 +241,14 @@ exports[`resolve returns sorted results 1`] = `
       },
       "videoSize": 1395864371,
     },
-    "name": "WebStreamr 🇩🇪 1080p",
+    "name": "WebStreamrMBG 🇩🇪 1080p",
     "title": "des-teufels-bad-2024
 💾 1.3 GB 🔗 Dropload from MeineCloud",
     "url": "https://srv34.dropload.io/hls2/01/00197/lyo2h1snpe5c_h/master.m3u8?t=MZSqs3F338ocbM2eTs8X23s585dWcYuilGrNNcidNas&s=1749846846&e=14400&f=987607&srv=srv27&i=0.0&sp=0&ii=50.99.15.93&p1=srv27&p2=srv27",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-mostraguarda-dropload-it",
+      "bingeGroup": "webstreamr-mbg-mostraguarda-dropload-it",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -257,14 +257,14 @@ exports[`resolve returns sorted results 1`] = `
       },
       "videoSize": 1181116006,
     },
-    "name": "WebStreamr 🇮🇹 720p",
+    "name": "WebStreamrMBG 🇮🇹 720p",
     "title": "the-devils-bath-2024-sd-sub-ita
 💾 1.1 GB 🔗 Dropload from MostraGuarda",
     "url": "https://srv34.dropload.io/hls2/01/00200/xsr90y2ltdyx_h/master.m3u8?t=rsJMeR8rtWZxFi_3DOdlt98U0rvAMincCe4-awDQzHE&s=1749846846&e=14400&f=1004116&srv=srv24&i=0.0&sp=0&ii=50.99.15.93&p1=srv24&p2=srv24",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-mostraguarda-supervideo-it",
+      "bingeGroup": "webstreamr-mbg-mostraguarda-supervideo-it",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -273,14 +273,14 @@ exports[`resolve returns sorted results 1`] = `
       },
       "videoSize": 1181116006,
     },
-    "name": "WebStreamr 🇮🇹 720p",
+    "name": "WebStreamrMBG 🇮🇹 720p",
     "title": "the-devils-bath-2024-sd-sub-ita
 💾 1.1 GB 🔗 SuperVideo from MostraGuarda",
     "url": "https://hfs311.serversicuro.cc/hls/,dnzpcjj427g4a3gyvbth53rxqgffbu4vol4o7gg7pskpzb6josghbkwhnisq,.urlset/master.m3u8",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-meinecloud-supervideo-de",
+      "bingeGroup": "webstreamr-mbg-meinecloud-supervideo-de",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -289,7 +289,7 @@ exports[`resolve returns sorted results 1`] = `
       },
       "videoSize": 1073741824,
     },
-    "name": "WebStreamr 🇩🇪 720p",
+    "name": "WebStreamrMBG 🇩🇪 720p",
     "title": "des-teufels-bad-2024
 💾 1 GB 🔗 SuperVideo from MeineCloud",
     "url": "https://hfs309.serversicuro.cc/hls/,dnzpfi3d27g4a3gyvbmh5klwtl65qh654hyjtgupd6p577fze64mz3bsmdyq,.urlset/master.m3u8",
@@ -301,7 +301,7 @@ exports[`resolve returns sorted results 2`] = `
 [
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-meinecloud-dropload-de",
+      "bingeGroup": "webstreamr-mbg-meinecloud-dropload-de",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -310,14 +310,14 @@ exports[`resolve returns sorted results 2`] = `
       },
       "videoSize": 1395864371,
     },
-    "name": "WebStreamr 🇩🇪 1080p",
+    "name": "WebStreamrMBG 🇩🇪 1080p",
     "title": "des-teufels-bad-2024
 💾 1.3 GB 🔗 Dropload from MeineCloud",
     "url": "https://srv34.dropload.io/hls2/01/00197/lyo2h1snpe5c_h/master.m3u8?t=MZSqs3F338ocbM2eTs8X23s585dWcYuilGrNNcidNas&s=1749846846&e=14400&f=987607&srv=srv27&i=0.0&sp=0&ii=50.99.15.93&p1=srv27&p2=srv27",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-mostraguarda-dropload-it",
+      "bingeGroup": "webstreamr-mbg-mostraguarda-dropload-it",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -326,14 +326,14 @@ exports[`resolve returns sorted results 2`] = `
       },
       "videoSize": 1181116006,
     },
-    "name": "WebStreamr 🇮🇹 720p",
+    "name": "WebStreamrMBG 🇮🇹 720p",
     "title": "the-devils-bath-2024-sd-sub-ita
 💾 1.1 GB 🔗 Dropload from MostraGuarda",
     "url": "https://srv34.dropload.io/hls2/01/00200/xsr90y2ltdyx_h/master.m3u8?t=rsJMeR8rtWZxFi_3DOdlt98U0rvAMincCe4-awDQzHE&s=1749846846&e=14400&f=1004116&srv=srv24&i=0.0&sp=0&ii=50.99.15.93&p1=srv24&p2=srv24",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-mostraguarda-supervideo-it",
+      "bingeGroup": "webstreamr-mbg-mostraguarda-supervideo-it",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -342,14 +342,14 @@ exports[`resolve returns sorted results 2`] = `
       },
       "videoSize": 1181116006,
     },
-    "name": "WebStreamr 🇮🇹 720p",
+    "name": "WebStreamrMBG 🇮🇹 720p",
     "title": "the-devils-bath-2024-sd-sub-ita
 💾 1.1 GB 🔗 SuperVideo from MostraGuarda",
     "url": "https://hfs311.serversicuro.cc/hls/,dnzpcjj427g4a3gyvbth53rxqgffbu4vol4o7gg7pskpzb6josghbkwhnisq,.urlset/master.m3u8",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-meinecloud-supervideo-de",
+      "bingeGroup": "webstreamr-mbg-meinecloud-supervideo-de",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -358,45 +358,45 @@ exports[`resolve returns sorted results 2`] = `
       },
       "videoSize": 1073741824,
     },
-    "name": "WebStreamr 🇩🇪 720p",
+    "name": "WebStreamrMBG 🇩🇪 720p",
     "title": "des-teufels-bad-2024
 💾 1 GB 🔗 SuperVideo from MeineCloud",
     "url": "https://hfs309.serversicuro.cc/hls/,dnzpfi3d27g4a3gyvbmh5klwtl65qh654hyjtgupd6p577fze64mz3bsmdyq,.urlset/master.m3u8",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-meinecloud-external-de",
+      "bingeGroup": "webstreamr-mbg-meinecloud-external-de",
       "notWebReady": true,
     },
     "externalUrl": "https://mixdrop.ag/e/3nzwveprim63or6",
-    "name": "WebStreamr 🇩🇪 ⚠️ external",
+    "name": "WebStreamrMBG 🇩🇪 ⚠️ external",
     "title": "🔗 mixdrop.ag from MeineCloud",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-mostraguarda-external-it",
+      "bingeGroup": "webstreamr-mbg-mostraguarda-external-it",
       "notWebReady": true,
     },
     "externalUrl": "https://mixdrop.ag/e/vk196d6xfzwwo1",
-    "name": "WebStreamr 🇮🇹 ⚠️ external",
+    "name": "WebStreamrMBG 🇮🇹 ⚠️ external",
     "title": "🔗 mixdrop.ag from MostraGuarda",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-meinecloud-external-de",
+      "bingeGroup": "webstreamr-mbg-meinecloud-external-de",
       "notWebReady": true,
     },
     "externalUrl": "https://dood.to/e/sk1m9eumzyjj",
-    "name": "WebStreamr 🇩🇪 ⚠️ external",
+    "name": "WebStreamrMBG 🇩🇪 ⚠️ external",
     "title": "🔗 dood.to from MeineCloud",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-mostraguarda-external-it",
+      "bingeGroup": "webstreamr-mbg-mostraguarda-external-it",
       "notWebReady": true,
     },
     "externalUrl": "https://dood.to/e/37o04m33q3g5",
-    "name": "WebStreamr 🇮🇹 ⚠️ external",
+    "name": "WebStreamrMBG 🇮🇹 ⚠️ external",
     "title": "🔗 dood.to from MostraGuarda",
   },
 ]
@@ -413,7 +413,7 @@ exports[`resolve returns source errors as stream 2`] = `
   "streams": [
     {
       "externalUrl": "https://meinecloud.click",
-      "name": "WebStreamr",
+      "name": "WebStreamrMBG",
       "title": "🔗 MeineCloud
 ❌ Request failed. Request-id: test.",
     },
@@ -425,29 +425,29 @@ exports[`resolve skips fallback sources if possible 1`] = `
 [
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_fsl-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_fsl-multi_en_hi",
       "notWebReady": true,
       "videoSize": 22430466703,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 2160p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 2160p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.2160p.NF.WEB-DL.DUAL.DDP5.1.Atmos.DV.HDR.H.265-4kHDHub.Com.mkv
 💾 20.89 GB 🔗 HubCloud (FSL) from 4KHDHub",
     "url": "https://fsl.master.surf/03ee346a29b2b13afa1935bfbd6d05e8?token=1768483596",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_fsl-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_fsl-multi_en_hi",
       "notWebReady": true,
       "videoSize": 19295140577,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 2160p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 2160p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.2160p.NF.WEB-DL.DUAL.DDP5.1.Atmos.H.265-4kHDHub.Com.mkv
 💾 17.97 GB 🔗 HubCloud (FSL) from 4KHDHub",
     "url": "https://fsl.master.surf/e25e157cd10b4c203ad281a9280d5931?token=1768483596",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_pixelserver-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_pixelserver-multi_en_hi",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -456,25 +456,25 @@ exports[`resolve skips fallback sources if possible 1`] = `
       },
       "videoSize": 19295140577,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 2160p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 2160p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.2160p.NF.WEB-DL.DUAL.DDP5.1.Atmos.H.265-4kHDHub.Com.mkv
 💾 17.97 GB 🔗 HubCloud (PixelServer) from 4KHDHub",
     "url": "https://pixeldrain.dev/api/file/Kd5MqbDS?download=",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_fsl-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_fsl-multi_en_hi",
       "notWebReady": true,
       "videoSize": 10018011217,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 1080p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.1080p.NF.WEB-DL.Hindi.DDP5.1.Atmos-English.DDP5.1.Atmos.H.265-4kHdHub.Com.mkv
 💾 9.33 GB 🔗 HubCloud (FSL) from 4KHDHub",
     "url": "https://fsl.master.surf/7a5fb128b139c4170291e04f0f6cd729?token=1768483596",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_pixelserver-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_pixelserver-multi_en_hi",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -483,25 +483,25 @@ exports[`resolve skips fallback sources if possible 1`] = `
       },
       "videoSize": 10018011217,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 1080p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.1080p.NF.WEB-DL.Hindi.DDP5.1.Atmos-English.DDP5.1.Atmos.H.265-4kHdHub.Com.mkv
 💾 9.33 GB 🔗 HubCloud (PixelServer) from 4KHDHub",
     "url": "https://pixeldrain.dev/api/file/h7hpWDSW?download=",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_fsl-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_fsl-multi_en_hi",
       "notWebReady": true,
       "videoSize": 9985798963,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 1080p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.1080p.NF.WEB-DL.Hindi.DDP5.1.Atmos-English.DDP5.1.Atmos.H.264-4kHdHub.Com.mkv
 💾 9.3 GB 🔗 HubCloud (FSL) from 4KHDHub",
     "url": "https://fsl.master.surf/f956e46a610fa88657d505d07be917e9?token=1768483435",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_pixelserver-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_pixelserver-multi_en_hi",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -510,25 +510,25 @@ exports[`resolve skips fallback sources if possible 1`] = `
       },
       "videoSize": 9985798963,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 1080p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.1080p.NF.WEB-DL.Hindi.DDP5.1.Atmos-English.DDP5.1.Atmos.H.264-4kHdHub.Com.mkv
 💾 9.3 GB 🔗 HubCloud (PixelServer) from 4KHDHub",
     "url": "https://pixeldrain.dev/api/file/yzyxiGzC?download=",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_fsl-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_fsl-multi_en_hi",
       "notWebReady": true,
       "videoSize": 5712306503,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 1080p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.1080p.NF.WEB-DL.Hindi.DDP5.1.Atmos-English.DDP5.1.Atmos.HDR-DV.H.265-4kHdHub.Com.mkv
 💾 5.32 GB 🔗 HubCloud (FSL) from 4KHDHub",
     "url": "https://fsl.master.surf/27df6ba61996f9a2e1725d5faa4a0cbb?token=1768483596",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_pixelserver-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_pixelserver-multi_en_hi",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -537,25 +537,25 @@ exports[`resolve skips fallback sources if possible 1`] = `
       },
       "videoSize": 5712306503,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 1080p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.1080p.NF.WEB-DL.Hindi.DDP5.1.Atmos-English.DDP5.1.Atmos.HDR-DV.H.265-4kHdHub.Com.mkv
 💾 5.32 GB 🔗 HubCloud (PixelServer) from 4KHDHub",
     "url": "https://pixeldrain.dev/api/file/gPsPz3B7?download=",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_fsl-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_fsl-multi_en_hi",
       "notWebReady": true,
       "videoSize": 1374389534,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 1080p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.1080p.NF.WEB-DL.Hindi.AAC5.1-English.AAC5.1.AV1-4kHdHub.Com.mkv
 💾 1.28 GB 🔗 HubCloud (FSL) from 4KHDHub",
     "url": "https://fsl.master.surf/f391f8beec927157dc784b261af950c2?token=1768483596",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-4khdhub-hubcloud_pixelserver-multi_en_hi",
+      "bingeGroup": "webstreamr-mbg-4khdhub-hubcloud_pixelserver-multi_en_hi",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -564,7 +564,7 @@ exports[`resolve skips fallback sources if possible 1`] = `
       },
       "videoSize": 1374389534,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇳 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇳 1080p",
     "title": "Wake.Up.Dead.Man.A.Knives.Out.Mystery.2025.1080p.NF.WEB-DL.Hindi.AAC5.1-English.AAC5.1.AV1-4kHdHub.Com.mkv
 💾 1.28 GB 🔗 HubCloud (PixelServer) from 4KHDHub",
     "url": "https://pixeldrain.dev/api/file/XsNetT2P?download=",
@@ -576,17 +576,17 @@ exports[`resolve uses priority for sorting 1`] = `
 [
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-vixsrc-vixsrc-multi_en_it",
+      "bingeGroup": "webstreamr-mbg-vixsrc-vixsrc-multi_en_it",
       "notWebReady": true,
     },
-    "name": "WebStreamr 🌐 🇺🇸 🇮🇹 1080p",
+    "name": "WebStreamrMBG 🌐 🇺🇸 🇮🇹 1080p",
     "title": "South Park S26E02
 🔗 VixSrc",
     "url": "https://vixsrc.to/playlist/418073.m3u8?token=9d4070344ef84e26fa4dd3cdf5c45037&expires=1773926255&h=1",
   },
   {
     "behaviorHints": {
-      "bingeGroup": "webstreamr-rgshows-rgshows-multi",
+      "bingeGroup": "webstreamr-mbg-rgshows-rgshows-multi",
       "notWebReady": true,
       "proxyHeaders": {
         "request": {
@@ -596,7 +596,7 @@ exports[`resolve uses priority for sorting 1`] = `
         },
       },
     },
-    "name": "WebStreamr 🌐 1080p",
+    "name": "WebStreamrMBG 🌐 1080p",
     "title": "South Park S26E02
 🔗 RgShows",
     "url": "https://sad.moriartis.store/v4/pk8/karuh/cf-master.1755845058.txt?t=121478a4&e=1765241578",
