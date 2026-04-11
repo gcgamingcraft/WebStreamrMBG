@@ -16,7 +16,7 @@ For a better experience, I'd advise using a Debrid service and WebStreamrMBG as 
 
 | Instance | URL |
 |----------|-----|
-| WebStreamrMBG | https://newman21-webstreamrmbg.hf.space |
+| WebStreamrMBG | https://87d6a6ef6b58-webstreamrmbg.baby-beamup.club |
 
 ## Known issues / limitations
 
