@@ -89,15 +89,16 @@ class MeineCloud extends Source_1.Source {
                         url: url, // Must be URL object
                         meta: {
                             countryCodes: [types_1.CountryCode.de],
-                            referer: this.baseUrl
-                        }
+                            referer: this.baseUrl,
+                        },
                     });
                 }
-                catch (e) {
+                catch {
                     // invalid URL, skip
                 }
             });
             return results;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         }
         catch (error) {
             console.error(`[MeineCloud] Error fetching ${pageUrl.href}:`, error.message || error);

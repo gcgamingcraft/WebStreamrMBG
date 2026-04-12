@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`FilmpalastTO handle the matrix 1`] = `
+[
+  {
+    "meta": {
+      "countryCodes": [
+        "de",
+      ],
+      "title": "VOE (Filmpalast)",
+    },
+    "url": "https://voe.sx/e/abc123",
+  },
+  {
+    "meta": {
+      "countryCodes": [
+        "de",
+      ],
+      "title": "Doodstream (Filmpalast)",
+    },
+    "url": "https://dood.to/e/xyz456",
+  },
+]
+`;
+
+exports[`FilmpalastTO handles absolute stream href and relative hoster url 1`] = `
+[
+  {
+    "meta": {
+      "countryCodes": [
+        "de",
+      ],
+      "title": "VOE Relative (Filmpalast)",
+    },
+    "url": "https://voe.sx/e/relative123",
+  },
+]
+`;
+
+exports[`FilmpalastTO handles direct stream page 1`] = `
+[
+  {
+    "meta": {
+      "countryCodes": [
+        "de",
+      ],
+      "title": "VOE Direct (Filmpalast)",
+    },
+    "url": "https://voe.sx/e/direct123",
+  },
+]
+`;

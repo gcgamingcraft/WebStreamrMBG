@@ -312,3 +312,24 @@ describe('resolve', () => {
     expect(streams).toMatchSnapshot();
   });
 });
+
+test('handles source throwing non-NotFoundError', async () => {
+  class ThrowingSource extends Source {
+    public readonly id = 'throwingsource';
+    public readonly label = 'ThrowingSource';
+    public readonly contentTypes: ContentType[] = ['movie'];
+    public readonly countryCodes: CountryCode[] = [CountryCode.de];
+    public readonly baseUrl = 'https://example.com';
+    public readonly handleInternal = async (): Promise<SourceResult[]> => {
+      throw new Error('boom');
+    };
+  }
+
+  const streamResolver = new StreamResolver(logger, new ExtractorRegistry(logger, createExtractors(fetcher)));
+
+  const streams = await streamResolver.resolve(ctx, [new ThrowingSource()], 'movie', new ImdbId('tt12345678', undefined, undefined));
+  expect(streams).toMatchSnapshot();
+
+  const streamsWithShowErrors = await streamResolver.resolve({ ...ctx, config: { ...ctx.config, showErrors: 'on' } }, [new ThrowingSource()], 'movie', new ImdbId('tt12345678', undefined, undefined));
+  expect(streamsWithShowErrors).toMatchSnapshot();
+});

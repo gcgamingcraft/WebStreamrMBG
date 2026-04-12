@@ -27,7 +27,7 @@ export class MegaKino extends Source {
     const imdbId = await getImdbId(ctx, this.fetcher, id);
 
     const tokenResponse = await this.fetcher.fetch(ctx, new URL('/?yg=token', await this.getBaseUrl(ctx)), { method: 'HEAD' });
-    
+
     const cookie = Cookie.parse((tokenResponse.headers['set-cookie'] as string[])[0] as string) as Cookie;
     if (!cookie) return [];
 
@@ -60,8 +60,8 @@ export class MegaKino extends Source {
         meta: {
           countryCodes: [CountryCode.de],
           referer: pageUrl.href,
-          title
-        }
+          title,
+        },
       }));
   }
 

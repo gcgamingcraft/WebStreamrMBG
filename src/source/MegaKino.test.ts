@@ -30,4 +30,13 @@ describe('MegaKino', () => {
     const streams = await source.handle(ctx, 'movie', new ImdbId('tt3513498', undefined, undefined));
     expect(streams).toMatchSnapshot();
   });
+  test('handles edge case iframes gracefully', async () => {
+    const streams = await source.handle(ctx, 'movie', new ImdbId('tt9876543', undefined, undefined));
+    expect(streams).toMatchSnapshot();
+  });
+  test('handles missing cookie gracefully', async () => {
+    const nocookieSource = new MegaKino(new FetcherMock(`${__dirname}/__fixtures__/MegaKino-nocookie`));
+    const streams = await nocookieSource.handle(ctx, 'movie', new ImdbId('tt0000001', undefined, undefined));
+    expect(streams).toHaveLength(0);
+  });
 });

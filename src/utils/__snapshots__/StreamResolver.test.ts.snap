@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`handles source throwing non-NotFoundError 1`] = `
+{
+  "streams": [],
+}
+`;
+
+exports[`handles source throwing non-NotFoundError 2`] = `
+{
+  "streams": [
+    {
+      "externalUrl": "https://example.com",
+      "name": "WebStreamrMBG",
+      "title": "🔗 ThrowingSource
+❌ Request failed. Request-id: test.",
+    },
+  ],
+}
+`;
+
 exports[`resolve adds error info 1`] = `
 {
   "streams": [
@@ -405,19 +424,14 @@ exports[`resolve returns sorted results 2`] = `
 exports[`resolve returns source errors as stream 1`] = `
 {
   "streams": [],
+  "ttl": 900000,
 }
 `;
 
 exports[`resolve returns source errors as stream 2`] = `
 {
-  "streams": [
-    {
-      "externalUrl": "https://meinecloud.click",
-      "name": "WebStreamrMBG",
-      "title": "🔗 MeineCloud
-❌ Request failed. Request-id: test.",
-    },
-  ],
+  "streams": [],
+  "ttl": 900000,
 }
 `;
 

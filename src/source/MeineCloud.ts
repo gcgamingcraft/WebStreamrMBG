@@ -61,19 +61,20 @@ export class MeineCloud extends Source {
           }
 
           results.push({
-            url: url,                    // Must be URL object
+            url: url, // Must be URL object
             meta: {
               countryCodes: [CountryCode.de],
-              referer: this.baseUrl
-            }
+              referer: this.baseUrl,
+            },
           });
-        } catch (e) {
+        } catch {
           // invalid URL, skip
         }
       });
 
       return results;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error(`[MeineCloud] Error fetching ${pageUrl.href}:`, error.message || error);
       return [];

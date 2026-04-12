@@ -1,5 +1,5 @@
 import { Context, CountryCode, Format, InternalUrlResult, Meta } from '../types';
-import { CustomRequestConfig, buildMediaFlowProxyHlsUrl, guessHeightFromPlaylist, hasMultiEnabled, iso639FromCountryCode, supportsMediaFlowProxy } from '../utils';
+import { buildMediaFlowProxyHlsUrl, CustomRequestConfig, guessHeightFromPlaylist, hasMultiEnabled, iso639FromCountryCode, supportsMediaFlowProxy } from '../utils';
 import { Extractor } from './Extractor';
 
 export class VixSrc extends Extractor {
@@ -9,6 +9,7 @@ export class VixSrc extends Extractor {
   public supports(_ctx: Context, url: URL): boolean {
     return null !== url.host.match(/vixsrc/);
   }
+
   protected async extractInternal(ctx: Context, url: URL, meta: Meta): Promise<InternalUrlResult[]> {
     const headers = { Referer: url.href };
     const html = await this.fetcher.text(ctx, url);
@@ -41,6 +42,7 @@ export class VixSrc extends Extractor {
       },
     ];
   };
+
   private async determineCountryCodesFromPlaylist(ctx: Context, playlistUrl: URL, init?: CustomRequestConfig): Promise<CountryCode[]> {
     const playlist = await this.fetcher.text(ctx, playlistUrl, init);
     const countryCodes: CountryCode[] = [];

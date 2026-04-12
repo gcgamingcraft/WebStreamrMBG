@@ -47,7 +47,9 @@ const sources = (0, source_1.createSources)(fetcher);
 const extractors = (0, extractor_1.createExtractors)(fetcher);
 const addon = (0, express_1.default)();
 addon.set('trust proxy', true);
-addon.get('/', (_req, res) => { res.redirect('/configure'); });
+addon.get('/', (_req, res) => {
+    res.redirect('/configure');
+});
 if ((0, utils_1.envIsProd)()) {
     addon.use((0, express_rate_limit_1.default)({ windowMs: 60 * 1000, limit: 30 }));
 }

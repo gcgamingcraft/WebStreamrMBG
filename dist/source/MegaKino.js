@@ -92,8 +92,8 @@ class MegaKino extends Source_1.Source {
             meta: {
                 countryCodes: [types_1.CountryCode.de],
                 referer: pageUrl.href,
-                title
-            }
+                title,
+            },
         }));
     }
     fetchPageUrl = async (ctx, imdbId, cookie) => {

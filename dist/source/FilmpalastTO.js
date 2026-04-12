@@ -50,7 +50,7 @@ class FilmpalastTO extends Source_1.Source {
     countryCodes = [types_1.CountryCode.de];
     priority = 1;
     // Fix: _ctx mit Unterstrich, um den TS6133 Fehler (unused variable) zu beheben
-    async handleInternal(_ctx, _type, id) {
+    async handleInternal(ctx, _type, id) {
         const results = [];
         const imdbId = id.toString();
         console.log(`[Filmpalast] Suche gestartet für ID: ${imdbId}`);
@@ -60,22 +60,13 @@ class FilmpalastTO extends Source_1.Source {
         }
         const searchUrl = `${this.baseUrl}/search/title/${encodeURIComponent(imdbId)}`;
         try {
-            const response = await this.fetcher.fetch(searchUrl);
-            if (!response || !response.data) {
-                console.log(`[Filmpalast] Response Data:`, response.data);
-                return [];
-            }
-            const html = response.data;
-            if (typeof html !== 'string') {
-                console.log(`[Filmpalast] Response ist kein String`);
-                return [];
-            }
+            const html = await this.fetcher.text(ctx, new URL(searchUrl));
             const $ = cheerio.load(html);
             let streamPageUrl;
             const streamAnchor = $('a[href*="/stream/"]').first();
             if (streamAnchor.length > 0) {
                 const href = streamAnchor.attr('href');
-                streamPageUrl = href.startsWith('http') ? href : `https:${href}`;
+                streamPageUrl = href.startsWith('http') ? href : `${this.baseUrl}${href}`;
                 console.log(`[Filmpalast] Stream-Seite gefunden: ${streamPageUrl}`);
             }
             else if (html.includes('currentStreamLinks')) {
@@ -86,8 +77,7 @@ class FilmpalastTO extends Source_1.Source {
                 console.log(`[Filmpalast] Kein Stream-Link auf Suchseite gefunden.`);
                 return [];
             }
-            const streamResponse = await this.fetcher.fetch(streamPageUrl);
-            const streamHtml = streamResponse.data;
+            const streamHtml = await this.fetcher.text(ctx, new URL(streamPageUrl));
             const $stream = cheerio.load(streamHtml);
             $stream('.currentStreamLinks a').each((_, element) => {
                 const href = $stream(element).attr('href');
@@ -98,12 +88,13 @@ class FilmpalastTO extends Source_1.Source {
                         url: new URL(fullUrl),
                         meta: {
                             title: `${hosterName} (Filmpalast)`,
-                            countryCodes: [types_1.CountryCode.de]
-                        }
+                            countryCodes: [types_1.CountryCode.de],
+                        },
                     });
                 }
             });
             console.log(`[Filmpalast] Suche beendet. ${results.length} Links gefunden.`);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         }
         catch (error) {
             console.error(`[Filmpalast] Fehler während des Scraping: ${error.message}`);

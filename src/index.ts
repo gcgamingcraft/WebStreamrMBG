@@ -53,7 +53,9 @@ const extractors = createExtractors(fetcher);
 
 const addon = express();
 addon.set('trust proxy', true);
-addon.get('/', (_req, res) => { res.redirect('/configure'); });
+addon.get('/', (_req, res) => {
+  res.redirect('/configure');
+});
 
 if (envIsProd()) {
   addon.use(rateLimit({ windowMs: 60 * 1000, limit: 30 }));
