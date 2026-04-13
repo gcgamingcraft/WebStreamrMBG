@@ -2,311 +2,240 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.landingTemplate = landingTemplate;
 const utils_1 = require("./utils");
-const STYLESHEET = `
-* {
-  box-sizing: border-box;
-}
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-}
-
-body {
-  padding: 2vh;
-  font-size: 2.2vh;
-}
-
-html {
-  background-size: auto 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  box-shadow: inset 0 0 0 2000px rgb(0 0 0 / 60%);
-}
-
-body {
-  display: flex;
-  font-family: 'Open Sans', Arial, sans-serif;
-  color: white;
-}
-
-h1 {
-  font-size: 4.5vh;
-  font-weight: 700;
-}
-
-h2 {
-  font-size: 2.2vh;
-  font-weight: normal;
-  font-style: italic;
-  opacity: 0.8;
-}
-
-h3 {
-  font-size: 2.2vh;
-}
-
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-  text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
-}
-
-p {
-  font-size: 1.75vh;
-}
-
-ul {
-  font-size: 1.75vh;
-  margin: 0;
-  margin-top: 1vh;
-  padding-left: 3vh;
-}
-
-a {
-  color: white
-}
-
-a.install-link {
-  text-decoration: none
-}
-
-button {
-  border: 0;
-  outline: 0;
-  color: white;
-  background: #8A5AAB;
-  padding: 1.2vh 3.5vh;
-  margin: auto;
-  text-align: center;
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-size: 2.2vh;
-  font-weight: 600;
-  cursor: pointer;
-  display: block;
-  box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.1s ease-in-out;
-}
-
-button:hover {
-  box-shadow: none;
-}
-
-button:active {
-  box-shadow: 0 0 0 0.5vh white inset;
-}
-
-#addon {
-  width: 40vh;
-  margin: auto;
-}
-
-.logo {
-  height: 14vh;
-  width: 14vh;
-  margin: auto;
-  margin-bottom: 3vh;
-}
-
-.logo img {
-  width: 100%;
-}
-
-.name, .version {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.name {
-  line-height: 5vh;
-  margin: 0;
-}
-
-.version {
-  position: relative;
-  line-height: 5vh;
-  opacity: 0.8;
-  margin-bottom: 2vh;
-}
-
-.contact {
-  position: absolute;
-  left: 0;
-  bottom: 4vh;
-  width: 100%;
-  text-align: center;
-}
-
-.contact a {
-  font-size: 1.4vh;
-  font-style: italic;
-}
-
-.separator {
-  margin-bottom: 4vh;
-}
-
-.form-element {
-  margin-bottom: 2vh;
-}
-
-.label-to-top {
-  margin-bottom: 2vh;
-}
-
-.label-to-right {
-  margin-left: 1vh !important;
-}
-
-.full-width {
-  width: 100%;
-}
-`;
 function landingTemplate(manifest) {
-    const background = manifest.background || 'https://dl.strem.io/addon-background.jpg';
     const logo = manifest.logo || 'https://dl.strem.io/addon-logo.png';
-    const contactHTML = manifest.contactEmail
-        ? `<div class="contact">
-      <p>Contact ${manifest.name} creator:</p>
-      <a href="mailto:${manifest.contactEmail}">${manifest.contactEmail}</a>
-    </div>`
+    const shortDesc = manifest.description.split('\n\n')[0];
+    const MISC_KEYS = ['showErrors', 'includeExternalUrls', 'mediaFlowProxyUrl', 'mediaFlowProxyPassword'];
+    const languageConfigs = manifest.config.filter(c => !c.key.startsWith('excludeResolution_') && !c.key.startsWith('disableExtractor_') && !MISC_KEYS.includes(c.key));
+    const resolutionConfigs = manifest.config.filter(c => c.key.startsWith('excludeResolution_'));
+    const extractorConfigs = manifest.config.filter(c => c.key.startsWith('disableExtractor_'));
+    const optionConfigs = manifest.config.filter(c => ['showErrors', 'includeExternalUrls'].includes(c.key));
+    const proxyConfigs = manifest.config.filter(c => ['mediaFlowProxyUrl', 'mediaFlowProxyPassword'].includes(c.key));
+    const langChips = languageConfigs.map((c) => {
+        const checked = c.default === 'checked' ? ' checked' : '';
+        const shortTitle = (c.title ?? '').replace(/\s*\(.*\)$/, '').trim();
+        const search = shortTitle.toLowerCase().replace(/[^\w ]/g, '');
+        return `<label class="lc" data-s="${search}"><input type="checkbox" name="${c.key}"${checked}><span>${shortTitle}</span></label>`;
+    }).join('');
+    const resChips = resolutionConfigs.map((c) => {
+        const isOff = c.default === 'checked';
+        const label = (c.title ?? '').replace('Exclude resolution ', '');
+        return `<div class="rc${isOff ? ' rc-off' : ''}" data-key="${c.key}">${label}</div>`;
+    }).join('');
+    const extChips = extractorConfigs.map((c) => {
+        const isOff = c.default === 'checked';
+        const label = (c.title ?? '').replace('Disable extractor ', '');
+        return `<div class="ec${isOff ? ' ec-off' : ''}" data-key="${c.key}">${label}</div>`;
+    }).join('');
+    const proxyFields = proxyConfigs.map((c) => {
+        const val = c.default ? ` value="${c.default}"` : '';
+        const type = c.type === 'password' ? 'password' : 'text';
+        const ph = type === 'password' ? '' : 'https://your-mediaflow-proxy/';
+        return `<div class="field"><label class="fl">${c.title}</label><input type="${type}" name="${c.key}" class="fi"${val} placeholder="${ph}" autocomplete="off"></div>`;
+    }).join('');
+    const optFields = optionConfigs.map((c) => {
+        const checked = c.default === 'checked' ? ' checked' : '';
+        return `<label class="or"><input type="checkbox" name="${c.key}"${checked}><span>${c.title}</span></label>`;
+    }).join('');
+    const customDesc = (0, utils_1.envGet)('CONFIGURATION_DESCRIPTION')
+        ? `<div class="note">${(0, utils_1.envGet)('CONFIGURATION_DESCRIPTION')}</div>`
         : '';
-    const stylizedTypes = manifest.types
-        .map(types => types.charAt(0).toUpperCase() + types.slice(1) + (types !== 'series' ? 's' : ''));
-    let formHTML = '';
-    let script = '';
-    if ((manifest.config || []).length) {
-        let options = '';
-        manifest.config.forEach((elem) => {
-            const key = elem.key;
-            if (['text', 'number', 'password'].includes(elem.type)) {
-                const isRequired = elem.required ? ' required' : '';
-                const defaultHTML = elem.default ? ` value="${elem.default}"` : '';
-                const inputType = elem.type;
-                options += `
-        <div class="form-element">
-          <div class="label-to-top">${elem.title}</div>
-          <input type="${inputType}" id="${key}" name="${key}" class="full-width"${defaultHTML}${isRequired}/>
-        </div>
-        `;
-            }
-            else if (elem.type === 'checkbox') {
-                const isChecked = elem.default === 'checked' ? ' checked' : '';
-                options += `
-        <div class="form-element">
-          <label for="${key}">
-            <input type="checkbox" id="${key}" name="${key}"${isChecked}> <span class="label-to-right">${elem.title}</span>
-          </label>
-        </div>
-        `;
-            }
-            else if (elem.type === 'select') {
-                const defaultValue = elem.default || (elem.options || [])[0];
-                options += `<div class="form-element">
-        <div class="label-to-top">${elem.title}</div>
-        <select id="${key}" name="${key}" class="full-width">
-        `;
-                const selections = elem.options || [];
-                selections.forEach((el) => {
-                    const isSelected = el === defaultValue ? ' selected' : '';
-                    options += `<option value="${el}"${isSelected}>${el}</option>`;
-                });
-                options += `</select>
-               </div>
-               `;
-            }
-        });
-        if (options.length) {
-            formHTML = `
-      <form class="pure-form" id="mainForm">
-        ${options}
-      </form>
-
-      <div class="separator"></div>
-      `;
-            script += `
-      installLink.onclick = () => {
-        return mainForm.reportValidity()
-      }
-      const updateLink = () => {
-        const config = Object.fromEntries(new FormData(mainForm))
-        config.mediaFlowProxyUrl = config.mediaFlowProxyUrl.replace(/^https?.\\/\\//, '');
-        installLink.href = 'stremio://' + window.location.host + '/' + encodeURIComponent(JSON.stringify(config)) + '/manifest.json'
-      }
-      mainForm.onchange = updateLink
-      `;
-        }
-    }
-    return `
-  <!DOCTYPE html>
-  <html style="background-image: url(${background});" lang="en">
-
-  <head>
-    <meta charset="utf-8">
-    <title>${manifest.name} - Stremio Addon</title>
-    <style>${STYLESHEET}</style>
-    <link rel="shortcut icon" href="${logo}" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
-  </head>
-
-  <body>
-    <div id="addon">
-      <div class="logo">
-      <img src="${logo}" alt="logo">
-      </div>
-      <h1 class="name">${manifest.name}</h1>
-      <h2 class="version">v${manifest.version || '0.0.0'}</h2>
-      <div class="description"><small>${manifest.description.replace(/\n/g, '<br>') || ''}</small></div>
-
-      <div class="separator"></div>
-
-      <p>
-        The source code can be found on <a href="https://github.com/newman2x/WebStreamrMBG" target="_blank">GitHub</a>.
-      </p>
-
-      <div class="separator"></div>
-
-      ${(0, utils_1.envGet)('CONFIGURATION_DESCRIPTION') || ''}
-
-      <div class="separator"></div>
-
-      <p>
-        Note: HTTP streams have limitations. For a better experience, I'd advise using a Debrid service and WebStreamrMBG as fallback.
-        <a href="https://torbox.app/subscription?referral=f22eb00d-27ce-4e20-85fc-68da3d018b99" target="_blank"><strong>TorBox</strong></a> is working very well. 
-      </p>
-
-      <div class="separator"></div>
-
-      <h3 class="gives">This addon has more :</h3>
-      <ul>
-      ${stylizedTypes.map(t => `<li>${t}</li>`).join('')}
-      </ul>
-
-      <div class="separator"></div>
-
-      ${formHTML}
-
-      <a id="installLink" class="install-link" href="#">
-      <button name="Install">INSTALL</button>
-      </a>
-      ${contactHTML}
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${manifest.name} — Stremio Addon</title>
+<link rel="icon" href="${logo}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{min-height:100%;background:#282a36;font-family:'Inter',Arial,sans-serif;color:#f8f8f2}
+body{position:relative;z-index:1;display:flex;justify-content:center;padding:2rem 1rem 5.5rem;min-height:100vh}
+.page{width:100%;max-width:600px}
+.hdr{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.5rem}
+.hdr-logo{width:58px;height:58px;border-radius:14px;overflow:hidden;flex-shrink:0}
+.hdr-logo img{width:100%;height:100%;object-fit:contain}
+.hdr-name{font-size:1.5rem;font-weight:700;line-height:1.2}
+.hdr-ver{font-size:.78rem;opacity:.5;margin-top:3px}
+.hdr-desc{font-size:.76rem;opacity:.65;margin-top:5px;line-height:1.45}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.lnk{display:inline-flex;align-items:center;padding:.3rem .75rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:8px;color:#fff;text-decoration:none;font-size:.75rem;font-weight:500;transition:background .15s}
+.lnk:hover{background:rgba(255,255,255,.14)}
+.torbox{display:inline-flex;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:8px;color:#fff;text-decoration:none;font-size:.75rem;font-weight:500;transition:background .15s}
+.torbox:hover{background:rgba(255,255,255,.14)}
+.card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:12px;padding:1.25rem;margin-bottom:.875rem}
+.ct{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.42;margin-bottom:.875rem}
+.ls{width:100%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:8px;color:#fff;font-family:inherit;font-size:.83rem;padding:.42rem .72rem;outline:none;margin-bottom:.72rem}
+.ls::placeholder{opacity:.32}
+.ls:focus{border-color:rgba(138,90,171,.55)}
+.lgrid{display:flex;flex-wrap:wrap;gap:.38rem}
+.lc{cursor:pointer;user-select:none}
+.lc input{position:absolute;opacity:0;width:0;height:0}
+.lc span{display:inline-block;padding:.26rem .58rem;border-radius:18px;font-size:.76rem;font-weight:500;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);transition:all .12s;white-space:nowrap}
+.lc:hover span{background:rgba(138,90,171,.22);border-color:rgba(138,90,171,.4)}
+.lc input:checked+span{background:rgba(138,90,171,.44);border-color:#8A5AAB}
+.lc.hidden{display:none}
+.rgrid{display:flex;flex-wrap:wrap;gap:.38rem}
+.rc{cursor:pointer;user-select:none;display:inline-block;padding:.2rem .48rem;border-radius:6px;font-size:.7rem;font-weight:500;background:rgba(138,90,171,.35);border:1px solid rgba(138,90,171,.6);transition:all .12s}
+.rc:hover{background:rgba(138,90,171,.5)}
+.rc.rc-off{background:rgba(210,50,50,.28);border-color:rgba(210,50,50,.58);text-decoration:line-through;opacity:.6}
+.rc.rc-off:hover{opacity:.65}
+.hint{font-size:.68rem;opacity:.35;margin-top:.5rem}
+.field{margin-bottom:.72rem}
+.field:last-child{margin-bottom:0}
+.fl{display:block;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;opacity:.48;margin-bottom:.28rem}
+.fi{width:100%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:8px;color:#fff;font-family:inherit;font-size:.83rem;padding:.48rem .72rem;outline:none}
+.fi::placeholder{opacity:.28}
+.fi:focus{border-color:rgba(138,90,171,.55)}
+.ab{background:none;border:none;color:rgba(255,255,255,.42);font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:.38rem;width:100%;padding:0}
+.ab:hover{color:rgba(255,255,255,.72)}
+.ab .ar{display:inline-block;transition:transform .2s}
+.ab.open .ar{transform:rotate(180deg)}
+.abody{display:none;margin-top:.875rem}
+.abody.open{display:block}
+.or{display:flex;align-items:center;gap:.6rem;cursor:pointer;padding:.32rem 0;font-size:.83rem}
+.or input[type=checkbox]{accent-color:#8A5AAB;width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:.875rem 0}
+.esub{font-size:.63rem;opacity:.36;margin-bottom:.45rem}
+.egrid{display:flex;flex-wrap:wrap;gap:.32rem}
+.ec{cursor:pointer;user-select:none;display:inline-block;padding:.2rem .48rem;border-radius:6px;font-size:.7rem;font-weight:500;background:rgba(138,90,171,.35);border:1px solid rgba(138,90,171,.6);transition:all .12s}
+.ec:hover{background:rgba(138,90,171,.5)}
+.ec.ec-off{background:rgba(210,50,50,.28);border-color:rgba(210,50,50,.58);text-decoration:line-through;opacity:.6}
+.ec.ec-off:hover{opacity:.65}
+.note{font-size:.74rem;opacity:.52;line-height:1.5;padding:.6rem .85rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px}
+.note a{color:#b98ae0}
+.note code{font-family:monospace;background:rgba(255,255,255,.1);padding:.1em .3em;border-radius:3px;font-size:.9em}
+.ibar{position:fixed;bottom:0;left:0;right:0;padding:.875rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.9) 55%,transparent);z-index:100;display:flex;justify-content:center}
+.ibtn{display:inline-block;background:#8A5AAB;color:#fff;text-decoration:none;font-family:inherit;font-size:.88rem;font-weight:700;letter-spacing:.06em;padding:.72rem 3.5rem;border-radius:10px;transition:background .15s,transform .1s;box-shadow:0 3px 14px rgba(138,90,171,.36)}
+.ibtn:hover{background:#9d6dc0}
+.ibtn:active{transform:scale(.97)}
+@media(max-width:480px){.hdr{flex-direction:column;align-items:flex-start}.hdr-logo{width:46px;height:46px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hdr">
+    <div class="hdr-logo"><img src="${logo}" alt="${manifest.name}"></div>
+    <div>
+      <div class="hdr-name">${manifest.name}</div>
+      <div class="hdr-ver">v${manifest.version || '0.0.0'}</div>
+      <div class="hdr-desc">${shortDesc}</div>
+      <div class="hdr-desc">💡 HTTP streams have limitations. For best results, use a Debrid service like <a href="https://torbox.app/subscription?referral=10c5caa4-4be7-424c-a92f-ae01bad60cda" target="_blank" class="torbox" style="padding:.15rem .5rem">⚡ TorBox</a>.</div>
     </div>
-    <script>
-      ${script}
+  </div>
 
-      if (typeof updateLink === 'function')
-      updateLink()
-      else
-      installLink.href = 'stremio://' + window.location.host + '/manifest.json'
-    </script>
-  </body>
+  <div class="links">
+    <a href="https://github.com/newman2x/WebStreamrMBG" target="_blank" class="lnk">⬡ GitHub</a>
+    <a href="https://github.com/newman2x/WebStreamrMBG/issues" target="_blank" class="lnk">⚠ Issues</a>
+    <a href="https://github.com/newman2x/WebStreamrMBG/blob/main/CHANGELOG.md" target="_blank" class="lnk">📋 Changelog</a>
+    <a href="https://ko-fi.com/newman2x" target="_blank" class="lnk">☕ Support Us!</a>
+  </div>
 
-  </html>`;
+  ${customDesc}
+
+  <form id="mainForm">
+
+    ${languageConfigs.length
+        ? `<div class="card">
+      <div class="ct">🌐 Languages</div>
+      <input type="text" class="ls" id="ls" placeholder="Filter languages…" autocomplete="off">
+      <div class="lgrid" id="lgrid">${langChips}</div>
+    </div>`
+        : ''}
+
+    ${proxyConfigs.length
+        ? `<div class="card">
+      <div class="ct">🔗 MediaFlow Proxy</div>
+      ${proxyFields}
+      <div class="note" style="margin-top:.6rem">Required for VixSrc and protected HLS streams. Set <code>MEDIAFLOW_PROXY_URL</code> server-side, or enter it here.</div>
+    </div>`
+        : ''}
+
+    ${resolutionConfigs.length
+        ? `<div class="card">
+      <div class="ct">📺 Resolution Filter</div>
+      <div class="rgrid">${resChips}</div>
+      <div class="hint">Click a resolution to exclude it (turns red).</div>
+    </div>`
+        : ''}
+
+    ${(optionConfigs.length || extractorConfigs.length)
+        ? `<div class="card">
+      <button type="button" class="ab" id="ab">⚙ Advanced <span class="ar">▾</span></button>
+      <div class="abody" id="abody">
+        ${optFields ? `<div style="margin-bottom:.25rem">${optFields}</div>` : ''}
+        ${extractorConfigs.length ? `<hr class="divider"><div class="esub">Extractors — check to disable</div><div class="egrid">${extChips}</div>` : ''}
+      </div>
+    </div>`
+        : ''}
+
+  </form>
+
+  <div class="note">💡 HTTP streams have limitations. For best results, use a Debrid service like <a href="https://torbox.app/subscription?referral=10c5caa4-4be7-424c-a92f-ae01bad60cda" target="_blank">TorBox</a>.</div>
+</div>
+
+<div class="ibar"><a id="installLink" class="ibtn" href="#">INSTALL</a></div>
+
+<script>
+const form=document.getElementById('mainForm');
+const ilink=document.getElementById('installLink');
+const ls=document.getElementById('ls');
+const ab=document.getElementById('ab');
+const abody=document.getElementById('abody');
+if(ls){ls.addEventListener('input',()=>{const q=ls.value.toLowerCase().trim();document.querySelectorAll('.lc').forEach(c=>{c.classList.toggle('hidden',q.length>0&&!(c.dataset.s||'').includes(q));});})}
+if(ab){ab.addEventListener('click',()=>{ab.classList.toggle('open');abody.classList.toggle('open');})}
+const updateLink=()=>{
+  const data=new FormData(form);
+  const config=Object.fromEntries([...data.entries()].filter(([,v])=>v!==''));
+  if(config.mediaFlowProxyUrl){config.mediaFlowProxyUrl=config.mediaFlowProxyUrl.replace(/^https?:\\/\\//, '');}
+  ilink.href='stremio://'+window.location.host+'/'+encodeURIComponent(JSON.stringify(config))+'/manifest.json';
+};
+form.addEventListener('change',updateLink);
+form.querySelectorAll('input[type=text],input[type=password]').forEach(el=>el.addEventListener('input',updateLink));
+
+document.querySelectorAll('.ec.ec-off').forEach(chip=>{
+  const inp=document.createElement('input');
+  inp.type='hidden';inp.name=chip.dataset.key;inp.value='on';inp.id='hx_'+chip.dataset.key;
+  form.appendChild(inp);
+});
+
+document.querySelectorAll('.ec').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    chip.classList.toggle('ec-off');
+    const key=chip.dataset.key;
+    const ex=document.getElementById('hx_'+key);
+    if(chip.classList.contains('ec-off')){
+      if(!ex){const inp=document.createElement('input');inp.type='hidden';inp.name=key;inp.value='on';inp.id='hx_'+key;form.appendChild(inp);}
+    } else {
+      if(ex)ex.remove();
+    }
+    updateLink();
+  });
+});
+
+document.querySelectorAll('.rc.rc-off').forEach(chip=>{
+  const inp=document.createElement('input');
+  inp.type='hidden';inp.name=chip.dataset.key;inp.value='on';inp.id='hx_'+chip.dataset.key;
+  form.appendChild(inp);
+});
+
+document.querySelectorAll('.rc').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    chip.classList.toggle('rc-off');
+    const key=chip.dataset.key;
+    const ex=document.getElementById('hx_'+key);
+    if(chip.classList.contains('rc-off')){
+      if(!ex){const inp=document.createElement('input');inp.type='hidden';inp.name=key;inp.value='on';inp.id='hx_'+key;form.appendChild(inp);}
+    } else {
+      if(ex)ex.remove();
+    }
+    updateLink();
+  });
+});
+
+updateLink();
+</script>
+</body>
+</html>`;
 }
