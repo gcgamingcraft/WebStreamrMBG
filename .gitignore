@@ -1,6 +1,4 @@
 /.idea
 /coverage/
+/dist/
 /node_modules/
-Dockerfile
-src/extractor/__fixtures__/
-src/extractor/__snapshots__/
