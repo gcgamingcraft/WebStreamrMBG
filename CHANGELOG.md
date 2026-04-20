@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.70.4](https://github.com/newman2x/WebStreamrMBG/compare/v0.70.3...v0.70.4) (2026-04-20)
+
+
+### Continuous Integration
+
+* trigger unstable deploy ([1f9a899](https://github.com/newman2x/WebStreamrMBG/commit/1f9a8991e71167bd35237e5ff0ab1b795bde2d18))
+
+
+### Bug Fixes
+
+* FourKHDHub slug filter, HubCloud PixelServer HEAD validation, hd-hub-helper dead code ([aa078d3](https://github.com/newman2x/WebStreamrMBG/commit/aa078d38a40bac0f65805b104b6ea9efd865e856))
+* **HubCloud:** validate PixelServer URLs before returning, skip dead pixeldrain files ([5bbddc3](https://github.com/newman2x/WebStreamrMBG/commit/5bbddc3d3c43be902f7917100037514460c840ae))
+
 ## [0.70.3](https://github.com/newman2x/WebStreamrMBG/compare/v0.70.2...v0.70.3) (2026-04-18)
 
 
