@@ -38,7 +38,7 @@ export class HubCloud extends Extractor {
           return text.includes('FSL') && !text.includes('FSLv2');
         })
         .map((_i, el) => {
-          const url = new URL(($(el).attr('href') as string) + '1' + new Date().getMinutes());
+          const url = new URL(($(el).attr('href') as string) + '1' + new Date(Date.now()).getMinutes());
           return {
             url,
             format: Format.unknown,
@@ -60,7 +60,7 @@ export class HubCloud extends Extractor {
           return text.includes('FSLv2');
         })
         .map((_i, el) => {
-          const url = new URL(($(el).attr('href') as string) + '_1' + new Date().getMinutes());
+          const url = new URL(($(el).attr('href') as string) + '_1' + new Date(Date.now()).getMinutes());
           return {
             url,
             format: Format.unknown,
