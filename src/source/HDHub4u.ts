@@ -78,18 +78,18 @@ export class HDHub4u extends Source {
       `h4:contains("EPiSODE ${epPadded}")`,
       `h4:contains("Episode ${ep}")`,
       `h4:contains("Episode ${epPadded}")`,
+      `h2:contains("EPiSODE ${ep}")`,
+      `h2:contains("EPiSODE ${epPadded}")`,
+      `h2:contains("Episode ${ep}")`,
+      `h2:contains("Episode ${epPadded}")`,
     ].join(', ');
 
+    const heading = $(episodeSelector).first();
+    const headingAndAfterHtml = $.html(heading)
+      + heading.nextUntil('hr').map((_i, el) => $.html(el)).get().join('');
+
     return [
-      ...this.extractHubDriveUrlResults(
-        $(episodeSelector)
-          .first()
-          .nextUntil('hr')
-          .map((_i, el) => $.html(el))
-          .get()
-          .join(''),
-        meta,
-      ),
+      ...this.extractHubDriveUrlResults(headingAndAfterHtml, meta),
     ];
   };
 
@@ -105,7 +105,7 @@ export class HDHub4u extends Source {
   private readonly extractHubDriveUrlResults = (html: string, meta: Meta): SourceResult[] => {
     const $ = cheerio.load(html);
 
-    return $('a[href*="hubdrive"]:not(:contains("⚡"))')
+    return $('a[href*="hubdrive"], a[href*="hubcdn.fans"]').not(':contains("⚡")')
       .map((_i, el) => ({ url: new URL($(el).attr('href') as string), meta }))
       .toArray();
   };

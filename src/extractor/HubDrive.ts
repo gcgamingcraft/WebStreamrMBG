@@ -22,7 +22,7 @@ export class HubDrive extends Extractor {
   }
 
   public supports(_ctx: Context, url: URL): boolean {
-    return null !== url.host.match(/hubdrive/);
+    return null !== url.host.match(/hubdrive|hubcdn\.fans/);
   }
 
   protected async extractInternal(ctx: Context, url: URL, meta: Meta): Promise<InternalUrlResult[]> {
