@@ -25,4 +25,12 @@ describe('HubCloud', () => {
   test('handle goat 2026', async () => {
     expect(await extractorRegistry.handle(ctx, new URL('https://hubcloud.foo/drive/p94k4dccjwxjcx4'))).toMatchSnapshot();
   });
+
+  test('handle page with window.location redirect', async () => {
+    expect(await extractorRegistry.handle(ctx, new URL('https://hubcloud.one/drive/windowloc'))).toMatchSnapshot();
+  });
+
+  test('handle page with no redirect url', async () => {
+    expect(await extractorRegistry.handle(ctx, new URL('https://hubcloud.one/drive/noredirect'))).toEqual([]);
+  });
 });

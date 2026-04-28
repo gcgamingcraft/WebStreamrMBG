@@ -49,11 +49,16 @@ export class ExtractorRegistry {
     const storedDataRaw = await this.urlResultCache.getRaw<UrlResult[]>(cacheKey);
     const expires = storedDataRaw?.expires;
     if (storedDataRaw && expires) {
-      const ttl = expires - Date.now();
+      const remainingCacheTtl = expires - Date.now();
 
       /* istanbul ignore if */
-      if (ttl > 0) {
-        return (storedDataRaw.value as UrlResult[]).map(urlResult => ({ ...urlResult, ttl, url: new URL(urlResult.url) }));
+      if (remainingCacheTtl > 0) {
+        // Use the minimum of the per-result TTL and the remaining cache TTL.
+        return (storedDataRaw.value as UrlResult[]).map(urlResult => ({
+          ...urlResult,
+          ttl: Math.min(urlResult.ttl, remainingCacheTtl),
+          url: new URL(urlResult.url),
+        }));
       }
     }
 
@@ -87,7 +92,9 @@ export class ExtractorRegistry {
       return urlResults;
     }
 
-    const ttl = urlResults.length ? extractor.ttl : 43200000; // 12h
+    // The server-side cache TTL must respect the shortest per-result TTL
+    const perResultTtl = urlResults.length ? Math.min(...urlResults.map(r => r.ttl)) : 43200000;
+    const ttl = urlResults.length ? Math.min(extractor.ttl, perResultTtl) : 43200000;
 
     await this.urlResultCache.set<UrlResult[]>(cacheKey, urlResults, ttl);
 

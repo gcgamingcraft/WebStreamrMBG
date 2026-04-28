@@ -43,7 +43,13 @@ export class ExtractController {
     await mutex.runExclusive(async () => {
       const urlResults = await this.extractorRegistry.handle(ctx, url);
 
-      res.redirect(urlResults[index]?.url.href as string);
+      const urlResult = urlResults[index];
+      if (!urlResult || urlResult.error) {
+        res.status(503).send('Service Unavailable');
+        return;
+      }
+
+      res.redirect(urlResult.url.href);
     });
 
     if (!mutex.isLocked()) {

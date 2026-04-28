@@ -13,7 +13,7 @@ export class Vidara extends Extractor {
 
   public readonly label = 'Vidara';
 
-  public override readonly ttl: number = 43200000; // 12h
+  public override readonly ttl: number = 21600000; // 6h
 
   public supports(_ctx: Context, url: URL): boolean {
     return null !== url.host.match(/vidara/);

@@ -37,10 +37,15 @@ export class Vidsonic extends Extractor {
     const m3u8Url = new URL(decodeHexUrl(hexMatch[1]));
     const headers = { Origin: url.origin };
 
+    // Compute a dynamic TTL based on the expires parameter in the m3u8 URL.
+    const expiresParam = m3u8Url.searchParams.get('expires');
+    const tokenTtl = Math.max(900000, Number(expiresParam) * 1000 - Date.now() - 120000); // 2min safety buffer
+
     return [
       {
         url: m3u8Url,
         format: Format.hls,
+        ttl: Math.min(tokenTtl, this.ttl),
         meta: {
           ...meta,
           height: meta.height ?? await guessHeightFromPlaylist(ctx, this.fetcher, m3u8Url, { headers }),

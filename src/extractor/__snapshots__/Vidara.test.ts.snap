@@ -13,7 +13,7 @@ exports[`Vidara vidara.to embed 1`] = `
     "requestHeaders": {
       "Origin": "https://vidara.to",
     },
-    "ttl": 43200000,
+    "ttl": 21600000,
     "url": "https://gsa31tg1.s1q2105.com/hls/test123/master.m3u8?token=test-token-123",
   },
 ]

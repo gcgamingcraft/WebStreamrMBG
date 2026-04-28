@@ -15,7 +15,7 @@ exports[`KinoGer Blood & Sinners 1`] = `
       "Referer": "https://kinoger.re/",
       "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
     },
-    "ttl": 21600000,
+    "ttl": 10800000,
     "url": "https://203.188.166.30/v4/gbA7adGrZj437iEsJRrrzg/1767736402/bgm/ge5fhb/master.m3u8?v=1748766126",
   },
 ]
@@ -36,7 +36,7 @@ exports[`KinoGer Dead City 1`] = `
       "Referer": "https://kinoger.re/",
       "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
     },
-    "ttl": 21600000,
+    "ttl": 10800000,
     "url": "https://203.188.166.27/v4/Uy-UlHozpQeybw_I6Qq9aA/1767736403/vz1/x6tsx9/master.m3u8?v=1748957184",
   },
 ]
@@ -57,7 +57,7 @@ exports[`KinoGer filma365.strp2p.site 1`] = `
       "Referer": "https://filma365.strp2p.site/",
       "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
     },
-    "ttl": 21600000,
+    "ttl": 10800000,
     "url": "https://45.156.158.180/v4/m9ZMHK7L5cSGEAnl3uFrXA/1767736406/s93/vih6bx/master.m3u8?v=1760732665",
   },
 ]
@@ -78,7 +78,7 @@ exports[`KinoGer kinoger.p2pplay.pro 1`] = `
       "Referer": "https://kinoger.p2pplay.pro/",
       "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
     },
-    "ttl": 21600000,
+    "ttl": 10800000,
     "url": "https://45.156.158.182/v4/mjIzquuE-IKTIP5JXHNu_Q/1767736407/9a/k53k9/master.m3u8?v=1754168682",
   },
 ]

@@ -62,10 +62,14 @@ export class VixSrc extends Extractor {
     if (!hasMultiEnabled(ctx.config) && !countryCodes.some(countryCode => countryCode in ctx.config)) {
       return [];
     }
+    // Compute a dynamic TTL based on the expires timestamp
+    const tokenTtl = Math.max(900000, Number(expiresMatch[1]) * 1000 - Date.now() - 120000); // 2min safety buffer
+
     return [
       {
         url: playlistUrl,
         format: Format.hls,
+        ttl: Math.min(tokenTtl, this.ttl),
         meta: {
           ...meta,
           countryCodes,

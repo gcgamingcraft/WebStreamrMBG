@@ -9,7 +9,7 @@ export class HubCloud extends Extractor {
 
   public readonly label = 'HubCloud';
 
-  public override readonly cacheVersion = 5;
+  public override readonly cacheVersion = 6;
 
   public supports(_ctx: Context, url: URL): boolean {
     return null !== url.host.match(/hubcloud/);
@@ -19,9 +19,12 @@ export class HubCloud extends Extractor {
     const headers = { Referer: meta.referer ?? url.href };
 
     const redirectHtml = await this.fetcher.text(ctx, url, { headers });
-    const redirectUrlMatch = redirectHtml.match(/var url ?= ?'(.*?)'/) as string[];
+    const redirectUrl = this.extractRedirectUrl(redirectHtml);
+    if (!redirectUrl) {
+      return [];
+    }
 
-    const linksHtml = await this.fetcher.text(ctx, new URL(redirectUrlMatch[1] as string), { headers: { Referer: url.href } });
+    const linksHtml = await this.fetcher.text(ctx, new URL(redirectUrl), { headers: { Referer: url.href } });
     const $ = cheerio.load(linksHtml);
 
     const title = $('title').text().trim();
@@ -30,10 +33,8 @@ export class HubCloud extends Extractor {
     const fileSize = bytes.parse($('#size').text()) as number;
 
     const fslTtl = (href: string): number => {
-      const tokenMatch = href.match(/token=(\d{10})/);
-      return tokenMatch
-        ? Math.max(900000, parseInt(tokenMatch[1] as string) * 1000 - Date.now() - 120000)
-        : 3600000;
+      void href;
+      return 900000; // 15 min
     };
 
     return Promise.all([
@@ -89,4 +90,20 @@ export class HubCloud extends Extractor {
       ).then(results => results.filter(r => r !== null)),
     ]);
   };
+
+  private extractRedirectUrl(html: string): string | null {
+    // Pattern 1: var url = 'https://...'
+    const varUrlMatch = html.match(/var url ?= ?'(.*?)'/);
+    if (varUrlMatch) {
+      return varUrlMatch[1] as string;
+    }
+
+    // Pattern 2: window.location = 'https://...' or window.location.href = 'https://...'
+    const locationMatch = html.match(/window\.location(?:\.href)? ?= ?['"](.*?)['"]/);
+    if (locationMatch) {
+      return locationMatch[1] as string;
+    }
+
+    return null;
+  }
 }
